@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Del otro lado de la pantalla — Brecha digital y adultos mayores en Bogotá · Grupo 1</title>
+<meta name="description" content="Fotoensayo sobre la brecha digital en la vida diaria de los adultos mayores de Bogotá y la pérdida de autonomía que provoca la virtualización de los servicios esenciales.">
+
+<!-- ====== TIPOGRAFÍAS (estilo institucional, sans-serif) ====== -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ===================================================================
+   FOTOENSAYO · "DEL OTRO LADO DE LA PANTALLA"
+   Grupo 1 — Brecha digital en adultos mayores (Bogotá)
+   Estilo: reportaje claro tipo ONU Mujeres (fondo blanco, fotos grandes
+   apiladas, pie de foto y crédito debajo de cada una).
+   Para REEMPLAZAR LAS FOTOS busca los comentarios "▼ REEMPLAZA AQUÍ".
+   =================================================================== */
+
+/* ---------- Tokens ---------- */
+:root{
+  --bg:#ffffff;
+  --bg-soft:#f2f5f8;       /* bloques de intro/cierre/créditos */
+  --ink:#14181d;           /* títulos */
+  --text:#33383f;          /* texto */
+  --muted:#6b7480;         /* créditos, meta */
+  --accent:#0a6cb0;        /* azul institucional (cámbialo si quieres) */
+  --accent-dark:#075188;
+  --line:#e4e8ec;
+  --display:"Libre Franklin", Arial, sans-serif;
+  --body:"Source Sans 3", system-ui, sans-serif;
+  --measure:860px;         /* ancho de lectura */
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{
+  background:var(--bg); color:var(--text);
+  font-family:var(--body); font-size:18px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img{ display:block; max-width:100%; }
+a{ color:var(--accent); }
+::selection{ background:var(--accent); color:#fff; }
+a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
+
+.wrap{ max-width:var(--measure); margin-inline:auto; padding-inline:clamp(20px,5vw,40px); }
+
+/* ---------- Masthead ---------- */
+.masthead{
+  border-top:4px solid var(--accent);
+  border-bottom:1px solid var(--line);
+}
+.masthead__row{
+  max-width:1180px; margin-inline:auto; padding:14px clamp(20px,5vw,40px);
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  font-family:var(--display); font-weight:700; font-size:.78rem;
+  letter-spacing:.14em; text-transform:uppercase;
+}
+.masthead__brand{ color:var(--ink); }
+.masthead__brand span{ color:var(--muted); font-weight:600; }
+.masthead__group{ color:var(--accent-dark); }
+
+/* ---------- Aviso (descartable) ---------- */
+.note{
+  position:relative; background:var(--bg-soft); border-bottom:1px solid var(--line);
+  text-align:center; padding:9px 44px 9px 16px;
+  font-size:.82rem; color:var(--muted);
+}
+.note b{ color:var(--accent-dark); font-weight:700; }
+.note__close{
+  position:absolute; right:10px; top:50%; transform:translateY(-50%);
+  width:24px; height:24px; border-radius:50%; cursor:pointer;
+  background:none; border:1px solid var(--line); color:var(--muted);
+  font-family:var(--body); line-height:1; transition:.2s var(--ease);
+}
+.note__close:hover{ background:var(--accent); color:#fff; border-color:var(--accent); }
+.note.is-hidden{ display:none; }
+
+/* ---------- Cabecera del reportaje ---------- */
+.lede{ padding:clamp(40px,7vw,72px) 0 clamp(20px,3vw,28px); }
+.lede__eyebrow{
+  font-family:var(--display); font-weight:700; font-size:.82rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:18px;
+}
+.lede h1{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(2.1rem,5.6vw,3.5rem); line-height:1.06;
+  letter-spacing:-.01em; color:var(--ink);
+}
+.lede__dek{
+  font-size:clamp(1.2rem,2.6vw,1.55rem); line-height:1.4;
+  color:#4a5560; margin-top:18px; font-weight:400; max-width:40ch;
+}
+.lede__meta{
+  margin-top:26px; padding-top:18px; border-top:1px solid var(--line);
+  font-family:var(--display); font-weight:600; font-size:.82rem;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--muted);
+  display:flex; gap:18px; flex-wrap:wrap;
+}
+.lede__meta .dot{ color:var(--line); }
+
+/* ---------- Párrafo de entrada ---------- */
+.intro{ padding-bottom:clamp(8px,2vw,16px); }
+.intro p{
+  font-size:clamp(1.16rem,2.1vw,1.34rem); line-height:1.6; color:#2b3138;
+  text-wrap:pretty;
+}
+.intro p + p{ margin-top:1em; }
+.intro strong{ color:var(--ink); font-weight:700; }
+
+/* ---------- Secuencia de fotos ---------- */
+.essay{ padding-bottom:clamp(20px,4vw,40px); }
+.shot{ margin-top:clamp(40px,7vw,72px); }
+.shot:first-child{ margin-top:clamp(30px,5vw,52px); }
+
+.shot__media{
+  position:relative; overflow:hidden;
+  background:#e9edf1; cursor:zoom-in;
+}
+.shot__media img{
+  width:100%; height:auto; display:block;
+  transition:filter .5s var(--ease), transform 1s var(--ease);
+}
+.shot__media:hover img{ filter:brightness(1.03); }
+
+figcaption{ padding-top:16px; }
+.shot__kicker{
+  font-family:var(--display); font-weight:700; color:var(--ink);
+  font-size:1.1rem; line-height:1.3; margin-bottom:6px;
+}
+.shot__text{
+  font-size:1.08rem; line-height:1.6; color:var(--text); text-wrap:pretty;
+}
+.shot__credit{
+  font-style:italic; color:var(--muted); font-size:.86rem; margin-top:10px;
+}
+
+/* botón "reemplazar" del modo edición */
+.shot__replace{
+  position:absolute; inset:0; z-index:3; display:none;
+  place-items:center; background:rgba(20,24,29,.45); cursor:copy;
+  font-family:var(--display); font-weight:700; font-size:.85rem;
+  letter-spacing:.08em; text-transform:uppercase; color:#fff;
+}
+.shot__replace span{
+  border:2px dashed #fff; padding:10px 18px; border-radius:3px;
+  background:rgba(20,24,29,.35);
+}
+body.editing .shot__media{ cursor:copy; }
+body.editing .shot__replace{ display:grid; }
+
+/* ---------- Cierre ---------- */
+.closing{
+  background:var(--bg-soft); border-top:1px solid var(--line);
+  margin-top:clamp(48px,8vw,84px); padding:clamp(44px,7vw,80px) 0;
+}
+.closing__eyebrow{
+  font-family:var(--display); font-weight:700; font-size:.82rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:16px;
+}
+.closing__lead{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(1.5rem,3.6vw,2.2rem); line-height:1.14;
+  letter-spacing:-.01em; color:var(--ink);
+}
+.closing__body{
+  font-size:clamp(1.08rem,1.8vw,1.22rem); line-height:1.6;
+  color:#2b3138; margin-top:18px;
+}
+
+/* ---------- Créditos ---------- */
+.credits{ border-top:3px solid var(--accent); padding:clamp(40px,6vw,64px) 0 clamp(48px,7vw,72px); }
+.credits__inner{ max-width:1180px; margin-inline:auto; padding-inline:clamp(20px,5vw,40px); }
+.credits__grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,72px); align-items:start; }
+.credits__label{ font-family:var(--display); font-weight:700; font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; }
+.credits__title{ font-family:var(--display); font-weight:800; font-size:clamp(1.25rem,2.6vw,1.6rem); line-height:1.2; color:var(--ink); }
+.credits__title span{ color:var(--muted); font-weight:600; }
+.credits__names{ list-style:none; }
+.credits__names li{ padding:9px 0; border-bottom:1px solid var(--line); font-size:1.02rem; color:var(--ink); }
+.credits__names li:last-child{ border-bottom:0; }
+.credits__meta{ margin-top:36px; padding-top:18px; border-top:1px solid var(--line);
+  display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  font-family:var(--display); font-weight:600; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+
+/* ---------- Botón de edición ---------- */
+.editbtn{
+  position:fixed; right:18px; bottom:18px; z-index:45;
+  background:#fff; color:var(--ink); border:1px solid var(--line);
+  border-radius:999px; padding:10px 18px; cursor:pointer;
+  font-family:var(--display); font-weight:700; font-size:.78rem; letter-spacing:.06em;
+  box-shadow:0 6px 20px -8px rgba(0,0,0,.3); transition:.2s var(--ease);
+}
+.editbtn:hover{ border-color:var(--accent); color:var(--accent-dark); }
+.editbtn.is-on{ background:var(--accent); color:#fff; border-color:var(--accent); }
+.edithint{
+  position:fixed; right:18px; bottom:64px; z-index:45; max-width:290px;
+  background:#fff; border:1px solid var(--line); border-left:3px solid var(--accent);
+  padding:13px 15px; border-radius:4px; box-shadow:0 8px 26px -10px rgba(0,0,0,.35);
+  font-size:.84rem; line-height:1.55; color:var(--text);
+  opacity:0; transform:translateY(8px); pointer-events:none; transition:.25s var(--ease);
+}
+.edithint.is-on{ opacity:1; transform:none; }
+.edithint b{ color:var(--accent-dark); }
+
+/* ---------- Lightbox ---------- */
+.lightbox{
+  position:fixed; inset:0; z-index:60; display:grid; place-items:center;
+  padding:clamp(18px,4vw,56px);
+  background:rgba(16,19,23,.93); backdrop-filter:blur(4px);
+  opacity:0; visibility:hidden; transition:opacity .3s var(--ease), visibility .3s;
+}
+.lightbox.is-open{ opacity:1; visibility:visible; }
+.lightbox__stage{ display:flex; flex-direction:column; align-items:center; gap:16px; max-width:1100px; width:100%; }
+.lightbox__img{ max-width:100%; max-height:78vh; object-fit:contain; box-shadow:0 30px 80px -30px rgba(0,0,0,.8); }
+.lightbox__cap{ color:#f1f3f5; text-align:center; max-width:62ch; font-size:.98rem; line-height:1.5; }
+.lightbox__cap b{ display:block; font-family:var(--display); font-weight:700; margin-bottom:6px; color:#fff; }
+.lightbox__btn{
+  position:absolute; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25);
+  color:#fff; width:46px; height:46px; border-radius:50%; cursor:pointer; line-height:1;
+  font-size:1.5rem; display:grid; place-items:center; transition:.2s var(--ease);
+}
+.lightbox__btn:hover{ background:var(--accent); border-color:var(--accent); }
+.lightbox__btn--close{ top:18px; right:18px; font-size:1.1rem; }
+.lightbox__btn--prev{ left:clamp(8px,2vw,24px); top:50%; transform:translateY(-50%); }
+.lightbox__btn--next{ right:clamp(8px,2vw,24px); top:50%; transform:translateY(-50%); }
+
+/* ---------- Reveal sutil ---------- */
+.js .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.js .reveal.in{ opacity:1; transform:none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width:720px){
+  body{ font-size:17px; }
+  .credits__grid{ grid-template-columns:1fr; gap:28px; }
+  .masthead__row{ font-size:.72rem; }
+}
+
+/* ---------- Movimiento reducido ---------- */
+@media (prefers-reduced-motion: reduce){
+  *{ scroll-behavior:auto !important; }
+  .js .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .shot__media img, .shot__media:hover img{ transition:none; transform:none; }
+}
+</style>
+</head>
+
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="masthead__row">
+    <div class="masthead__brand">Fotoensayo <span>· Brecha digital</span></div>
+    <div class="masthead__group">Grupo 1</div>
+  </div>
+</header>
+
+<!-- ============ AVISO (descartable) ============ -->
+<div class="note" id="note">
+  Imágenes de muestra · reemplázalas con las fotos del <b>Grupo&nbsp;1</b> con el botón <b>✎ Modo edición</b> o editando el <code>src</code> en el código.
+  <button class="note__close" id="noteClose" aria-label="Cerrar aviso">✕</button>
+</div>
+
+<main>
+
+  <!-- ===================== CABECERA ===================== -->
+  <article>
+    <header class="lede">
+      <div class="wrap">
+        <p class="lede__eyebrow reveal">Fotoensayo</p>
+        <h1 class="reveal">Del otro lado de la pantalla</h1>
+        <p class="lede__dek reveal">La brecha digital en la vida diaria de los adultos mayores de Bogotá.</p>
+        <div class="lede__meta reveal">
+          <span>Bogotá D.C.</span><span class="dot">/</span><span>Realidad de los adultos mayores</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== INTRODUCCIÓN ===================== -->
+    <section class="intro">
+      <div class="wrap">
+        <p class="reveal">Cada día, miles de adultos mayores en Bogotá se enfrentan a una ciudad que migró sus servicios esenciales —citas médicas, bancos, trámites pensionales— a una pantalla. Para quienes no tienen acceso ni acompañamiento, esa transición se vive como <strong>exclusión, dependencia y pérdida de autonomía</strong>.</p>
+        <p class="reveal">Estas siete imágenes son una mirada a esa realidad y una invitación a entender que la tecnología debería ser un puente, no un muro. Suponer que un adulto mayor no puede aprender a usarla es parte del problema; las barreras también están en la falta de inclusión, accesibilidad y paciencia de la sociedad.</p>
+      </div>
+    </section>
+
+    <!-- ===================== FOTOS ===================== -->
+    <section class="essay">
+      <div class="wrap">
+
+        <!-- ===== 01 ===== -->
+        <figure class="shot reveal">
+          <!-- ▼ REEMPLAZA AQUÍ — Foto 01: fila de adultos mayores afuera de una EPS, banco o cajero -->
+          <div class="shot__media">
+            <img class="js-photo" data-i="0"
+                 src="https://picsum.photos/seed/ensayo-fila/1600/1067"
+                 alt="Fila de adultos mayores esperando afuera de una EPS o un cajero en Bogotá.">
+            <div class="shot__replace"><span>＋ Reemplazar foto</span></div>
+          </div>
+          <figcaption>
+            <p class="shot__kicker">Las filas</p>
+            <p class="shot__text">La digitalización prometió agilidad, pero en las calles de Bogotá se tradujo en filas interminables para quienes el internet sigue siendo un territorio ajeno.</p>
+            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+          </figcaption>
+        </figure>
+
+        <!-- ===== 02 ===== -->
+        <figure class="shot reveal">
+          <!-- ▼ REEMPLAZA AQUÍ — Foto 02: adulto mayor en casa mirando confundido el celular -->
+          <div class="shot__media">
+            <img class="js-photo" data-i="1"
+                 src="https://picsum.photos/seed/ensayo-rostro/1600/1067"
+                 alt="Adulto mayor en su hogar mirando con confusión la pantalla de un teléfono celular.">
+            <div class="shot__replace"><span>＋ Reemplazar foto</span></div>
+          </div>
+          <figcaption>
+            <p class="shot__kicker">El primer obstáculo</p>
+            <p class="shot__text">Detrás de cada pantalla hay una historia de frustración. El celular, más que una herramienta de conexión, se ha vuelto una barrera de entrada.</p>
+            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+          </figcaption>
+        </figure>
+
+        <!-- ===== 03 ===== -->
+        <figure class="shot reveal">
+          <!-- ▼ REEMPLAZA AQUÍ — Foto 03: manos digitando con vacilación una clave (cajero/app) -->
+          <div class="shot__media">
+            <img class="js-photo" data-i="2"
+                 src="https://picsum.photos/seed/ensayo-manos/1600/1067"
+                 alt="Manos de un adulto mayor digitando con vacilación una clave en un cajero o aplicación.">
+            <div class="shot__replace"><span>＋ Reemplazar foto</span></div>
+          </div>
+          <figcaption>
+            <p class="shot__kicker">Un error que cuesta caro</p>
+            <p class="shot__text">Un error al digitar puede bloquear sus cuentas. Sin interfaces pensadas para ellos, una tarea simple se convierte en una fuente de ansiedad.</p>
+            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+          </figcaption>
+        </figure>
+
+        <!-- ===== 04 ===== -->
+        <figure class="shot reveal">
+          <!-- ▼ REEMPLAZA AQUÍ — Foto 04: adulto mayor pidiendo ayuda a un nieto, vecino o desconocido -->
+          <div class="shot__media">
+            <img class="js-photo" data-i="3"
+                 src="https://picsum.photos/seed/ensayo-ayuda/1600/1067"
+                 alt="Adulto mayor pidiéndole ayuda a un familiar para leer un mensaje o agendar una cita.">
+            <div class="shot__replace"><span>＋ Reemplazar foto</span></div>
+          </div>
+          <figcaption>
+            <p class="shot__kicker">Depender de otros</p>
+            <p class="shot__text">La brecha digital les arrebata la independencia. Gestionar la propia salud o el propio dinero pasa a depender de la buena voluntad y del tiempo ajeno.</p>
+            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+          </figcaption>
+        </figure>
+
+        <!-- ===== 05 ===== -->
+        <figure class="shot reveal">
+          <!-- ▼ REEMPLAZA AQUÍ — Foto 05: clase de sistemas en una Casa de la Sabiduría (Centro Día) -->
+          <div class="shot__media">
+            <img class="js-photo" data-i="4"
+                 src="https://picsum.photos/seed/ensayo-clase/1600/1067"
+                 alt="Adulto mayor en una clase de sistemas en una Casa de la Sabiduría del Distrito.">
+            <div class="shot__replace"><span>＋ Reemplazar foto</span></div>
+          </div>
+          <figcaption>
+            <p class="shot__kicker">Nunca es tarde</p>
+            <p class="shot__text">Espacios como las Casas de la Sabiduría del Distrito le devuelven la confianza a una generación que se niega a ser borrada por la tecnología.</p>
+            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+          </figcaption>
+        </figure>
+
+        <!-- ===== 06 ===== -->
+        <figure class="shot reveal">
+          <!-- ▼ REEMPLAZA AQUÍ — Foto 06: libreta vieja con contraseñas y pasos anotados a lápiz -->
+          <div class="shot__media">
+            <img class="js-photo" data-i="5"
+                 src="https://picsum.photos/seed/ensayo-libreta/1600/1067"
+                 alt="Libreta de papel con contraseñas y pasos anotados a mano a lápiz.">
+            <div class="shot__replace"><span>＋ Reemplazar foto</span></div>
+          </div>
+          <figcaption>
+            <p class="shot__kicker">El manual de papel</p>
+            <p class="shot__text">Apuntes a lápiz, paso a paso: el manual analógico para sobrevivir al mundo digital, y la prueba de la falta de pedagogía de las instituciones.</p>
+            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+          </figcaption>
+        </figure>
+
+        <!-- ===== 07 ===== -->
+        <figure class="shot reveal">
+          <!-- ▼ REEMPLAZA AQUÍ — Foto 07: rostro de perfil junto a la ventana, reflejo del celular en los lentes -->
+          <div class="shot__media">
+            <img class="js-photo" data-i="6"
+                 src="https://picsum.photos/seed/ensayo-ventana/1600/1067"
+                 alt="Rostro de perfil de un adulto mayor junto a una ventana, con el reflejo del celular en sus lentes.">
+            <div class="shot__replace"><span>＋ Reemplazar foto</span></div>
+          </div>
+          <figcaption>
+            <p class="shot__kicker">La pregunta de fondo</p>
+            <p class="shot__text">Avanzar tecnológicamente no puede significar dejar atrás a nuestros mayores. La verdadera innovación incluye la empatía.</p>
+            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ===================== CIERRE ===================== -->
+    <section class="closing">
+      <div class="wrap">
+        <p class="closing__eyebrow reveal">Para terminar</p>
+        <p class="closing__lead reveal">Incluirlos no es frenar el futuro. Es construirlo bien.</p>
+        <p class="closing__body reveal">Invitamos a la sociedad y a las instituciones a crear entornos digitales más accesibles, pacientes y humanos, donde envejecer no signifique quedarse afuera.</p>
+      </div>
+    </section>
+  </article>
+
+  <!-- ===================== CRÉDITOS ===================== -->
+  <footer class="credits">
+    <div class="credits__inner">
+      <div class="credits__grid">
+        <div class="reveal">
+          <p class="credits__label">Grupo 1 · Fotoensayo</p>
+          <p class="credits__title">Realidad de los adultos mayores en Bogotá <span>— Brecha digital</span></p>
+        </div>
+        <div class="reveal">
+          <ul class="credits__names">
+            <li>Julio César Chiquillo Camacho</li>
+            <li>Katy Daniela Martínez Ramos</li>
+            <li>Juan Pablo Moreno Cadena</li>
+            <li>Sinthia Catalina Peña Quimbayo</li>
+            <li>Ana María Rodríguez Amaya</li>
+          </ul>
+        </div>
+      </div>
+      <div class="credits__meta">
+        <span>Bogotá D.C., Colombia</span>
+        <span>[ Asignatura · Semestre — edítalo aquí ]</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lightbox__btn lightbox__btn--close" id="lbClose" aria-label="Cerrar">✕</button>
+  <button class="lightbox__btn lightbox__btn--prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <button class="lightbox__btn lightbox__btn--next" id="lbNext" aria-label="Siguiente">›</button>
+  <div class="lightbox__stage">
+    <img class="lightbox__img" id="lbImg" src="" alt="">
+    <p class="lightbox__cap"><b id="lbKicker"></b><span id="lbText"></span></p>
+  </div>
+</div>
+
+<!-- ============ MODO EDICIÓN ============ -->
+<button class="editbtn" id="editBtn">✎ Modo edición</button>
+<div class="edithint" id="editHint">Haz clic en cualquier foto para previsualizar una imagen de tu equipo. Es solo una vista previa; para dejarla fija, cambia el <b>src</b> de esa imagen en el código.</div>
+<input type="file" id="fileInput" accept="image/*" hidden>
+
+<script>
+/* ===================================================================
+   JAVASCRIPT
+   1) Aviso descartable
+   2) Reveal sutil al hacer scroll
+   3) Lightbox (ampliar fotos, navegar con flechas/teclado)
+   4) Modo edición (previsualizar fotos propias)
+   =================================================================== */
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1) Aviso */
+  var note = document.getElementById('note');
+  document.getElementById('noteClose').addEventListener('click', function(){ note.classList.add('is-hidden'); });
+
+  /* 2) Reveal */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold:0.12, rootMargin:'0px 0px -6% 0px' });
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* 3) Lightbox */
+  var photos = Array.prototype.slice.call(document.querySelectorAll('.js-photo'));
+  function dataFor(i){
+    var img = photos[i];
+    var fig = img.closest('.shot');
+    var kicker = fig.querySelector('.shot__kicker');
+    var text = fig.querySelector('.shot__text');
+    return {
+      src: img.currentSrc || img.src,
+      alt: img.alt,
+      kicker: kicker ? kicker.textContent.trim() : '',
+      text: text ? text.textContent.trim() : ''
+    };
+  }
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbKicker = document.getElementById('lbKicker');
+  var lbText = document.getElementById('lbText');
+  var lbClose = document.getElementById('lbClose');
+  var lbIndex = 0, lastFocus = null;
+
+  function showLb(i){
+    lbIndex = (i + photos.length) % photos.length;
+    var d = dataFor(lbIndex);
+    lbImg.src = d.src; lbImg.alt = d.alt;
+    lbKicker.textContent = d.kicker; lbText.textContent = d.text;
+  }
+  function openLb(i){
+    lastFocus = document.activeElement;
+    showLb(i);
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+  function closeLb(){
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  lbClose.addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', function(){ showLb(lbIndex - 1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ showLb(lbIndex + 1); });
+  lightbox.addEventListener('click', function(e){ if (e.target === lightbox) closeLb(); });
+  document.addEventListener('keydown', function(e){
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') showLb(lbIndex - 1);
+    if (e.key === 'ArrowRight') showLb(lbIndex + 1);
+  });
+
+  /* 4) Modo edición */
+  var editBtn = document.getElementById('editBtn');
+  var editHint = document.getElementById('editHint');
+  var fileInput = document.getElementById('fileInput');
+  var editing = false, editTarget = null;
+
+  editBtn.addEventListener('click', function(){
+    editing = !editing;
+    document.body.classList.toggle('editing', editing);
+    editBtn.classList.toggle('is-on', editing);
+    editHint.classList.toggle('is-on', editing);
+    editBtn.textContent = editing ? '✓ Listo' : '✎ Modo edición';
+  });
+
+  document.querySelectorAll('.shot__media').forEach(function(media){
+    media.addEventListener('click', function(){
+      var img = media.querySelector('.js-photo');
+      if (editing){
+        editTarget = img;
+        fileInput.value = '';
+        fileInput.click();
+      } else {
+        openLb(photos.indexOf(img));
+      }
+    });
+  });
+
+  fileInput.addEventListener('change', function(){
+    var file = fileInput.files && fileInput.files[0];
+    if (!file || !editTarget) return;
+    var reader = new FileReader();
+    reader.onload = function(ev){ editTarget.src = ev.target.result; editTarget.removeAttribute('srcset'); };
+    reader.readAsDataURL(file);
+  });
+})();
+</script>
+</body>
+</html>
