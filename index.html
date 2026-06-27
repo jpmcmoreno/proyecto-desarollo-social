@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Del otro lado de la pantalla — Brecha digital y adultos mayores en Bogotá · Grupo 1</title>
-<meta name="description" content="Fotoensayo sobre la brecha digital en la vida diaria de los adultos mayores de Bogotá y la pérdida de autonomía que provoca la virtualización de los servicios esenciales.">
+<title>La brecha digital — situaciones y soluciones · Grupo 1</title>
+<meta name="description" content="La brecha digital en la vida de los adultos mayores: situaciones cotidianas que la evidencian y propuestas para acompañarlos en el mundo digital.">
 
 <!-- ====== TIPOGRAFÍAS (estilo institucional, sans-serif) ====== -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -106,6 +106,7 @@ a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-
 .shot__media{
   position:relative; overflow:hidden;
   background:#e9edf1; cursor:zoom-in;
+  max-width:520px; margin-inline:auto;   /* fotos más pequeñas y centradas */
 }
 .shot__media img{
   width:100%; height:auto; display:block;
@@ -113,17 +114,30 @@ a:focus-visible, button:focus-visible{ outline:2px solid var(--accent); outline-
 }
 .shot__media:hover img{ filter:brightness(1.03); }
 
-figcaption{ padding-top:16px; }
+figcaption{ padding-top:18px; }
 .shot__kicker{
   font-family:var(--display); font-weight:700; color:var(--ink);
-  font-size:1.1rem; line-height:1.3; margin-bottom:6px;
+  font-size:clamp(1.3rem,2.4vw,1.6rem); line-height:1.25; margin-bottom:10px;
 }
 .shot__text{
-  font-size:1.08rem; line-height:1.6; color:var(--text); text-wrap:pretty;
+  font-size:clamp(1.2rem,2vw,1.4rem); line-height:1.65; color:var(--text); text-wrap:pretty;
 }
 .shot__credit{
   font-style:italic; color:var(--muted); font-size:.86rem; margin-top:10px;
 }
+
+/* Etiqueta de situación / contexto */
+.shot__tag{
+  font-family:var(--display); font-weight:800; font-size:.84rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--accent);
+  margin-bottom:14px; padding-bottom:10px; border-bottom:2px solid var(--line);
+}
+.shot__tag span{ color:var(--muted); font-weight:700; }
+
+/* Par de imágenes (situación con dos fotos) */
+.shot__pair{ display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:620px; margin-inline:auto; }
+.shot__pair .shot__media{ height:100%; max-width:none; margin-inline:0; }
+@media (max-width:600px){ .shot__pair{ grid-template-columns:1fr; max-width:520px; } }
 
 /* ---------- Cierre ---------- */
 .closing{
@@ -158,6 +172,91 @@ figcaption{ padding-top:16px; }
 .credits__meta{ margin-top:36px; padding-top:18px; border-top:1px solid var(--line);
   display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
   font-family:var(--display); font-weight:600; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+
+/* ---------- Sección Solución ---------- */
+.solution{ border-top:1px solid var(--line); padding:clamp(48px,8vw,88px) 0 clamp(20px,4vw,40px); }
+.solution__eyebrow{
+  font-family:var(--display); font-weight:700; font-size:.82rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:16px;
+}
+.solution h2{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(1.8rem,4.4vw,2.7rem); line-height:1.08;
+  letter-spacing:-.01em; color:var(--ink); max-width:18ch;
+}
+.solution__lead{
+  font-size:clamp(1.1rem,2vw,1.3rem); line-height:1.6; color:#2b3138;
+  margin-top:20px; max-width:62ch; text-wrap:pretty;
+}
+.solution__lead + .solution__lead{ margin-top:1em; }
+.solution__subtitle{
+  font-family:var(--display); font-weight:700; color:var(--ink);
+  font-size:clamp(1.15rem,2.2vw,1.45rem); margin-top:clamp(40px,6vw,64px);
+}
+.solution__hint{ color:var(--muted); font-size:.98rem; margin-top:6px; }
+
+/* Matriz 1x3 de gráficas */
+.charts{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:clamp(18px,2.4vw,26px); margin-top:28px;
+}
+.chart-card{
+  border:1px solid var(--line); border-radius:14px;
+  background:#fff; padding:20px 18px 18px;
+  display:flex; flex-direction:column;
+  box-shadow:0 1px 0 rgba(20,24,29,.02);
+}
+.chart-card__stat{
+  font-family:var(--display); font-weight:800; color:var(--accent-dark);
+  font-size:clamp(1.7rem,2.4vw,2.1rem); line-height:1;
+}
+.chart-card__title{
+  font-family:var(--display); font-weight:700; color:var(--ink);
+  font-size:1.04rem; line-height:1.25; margin-top:8px;
+}
+.chart-card__canvas{ position:relative; height:230px; margin-top:14px; }
+.chart-card__note{ color:var(--muted); font-size:.82rem; margin-top:12px; line-height:1.4; }
+.chart-card__note span{ font-style:italic; }
+
+/* Propuesta para Bogotá */
+.proposal{ background:var(--bg-soft); border-top:1px solid var(--line); margin-top:clamp(40px,6vw,64px); padding:clamp(40px,7vw,72px) 0; }
+.proposal__eyebrow{
+  font-family:var(--display); font-weight:700; font-size:.82rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;
+}
+.proposal h3{
+  font-family:var(--display); font-weight:800; color:var(--ink);
+  font-size:clamp(1.4rem,3.2vw,2rem); line-height:1.12; max-width:24ch;
+}
+.proposal__body{ font-size:clamp(1.05rem,1.8vw,1.2rem); line-height:1.6; color:#2b3138; margin-top:16px; max-width:62ch; }
+.proposal__steps{ list-style:none; margin-top:26px; display:grid; gap:14px; }
+.proposal__steps li{
+  display:flex; gap:14px; align-items:flex-start;
+  background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px 18px;
+}
+.proposal__num{
+  flex:0 0 auto; width:34px; height:34px; border-radius:50%;
+  background:var(--accent); color:#fff; font-family:var(--display); font-weight:800;
+  display:grid; place-items:center; font-size:1rem;
+}
+.proposal__step-t{ font-family:var(--display); font-weight:700; color:var(--ink); font-size:1.04rem; }
+.proposal__step-d{ font-size:.98rem; line-height:1.5; color:var(--text); margin-top:3px; }
+
+/* Referencias / fuentes */
+.references{ margin-top:clamp(28px,4vw,40px); padding-top:22px; border-top:1px solid var(--line); }
+.references__title{
+  font-family:var(--display); font-weight:700; font-size:.78rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;
+}
+.references__list{ margin:0 0 0 1.2em; padding:0; display:grid; gap:10px; }
+.references__list li{ font-size:.92rem; line-height:1.5; color:var(--text); }
+.references__list a{ color:var(--accent); word-break:break-word; }
+.references__note{ margin-top:14px; font-size:.86rem; font-style:italic; color:var(--muted); line-height:1.5; }
+
+@media (max-width:860px){
+  .charts{ grid-template-columns:1fr; }
+  .chart-card__canvas{ height:240px; }
+}
 
 /* ---------- Lightbox ---------- */
 .lightbox{
@@ -207,7 +306,7 @@ figcaption{ padding-top:16px; }
 <!-- ============ MASTHEAD ============ -->
 <header class="masthead">
   <div class="masthead__row">
-    <div class="masthead__brand">Fotoensayo <span>· Brecha digital</span></div>
+    <div class="masthead__brand">Brecha digital <span>· Situaciones y soluciones</span></div>
     <div class="masthead__group">Grupo 1</div>
   </div>
 </header>
@@ -218,129 +317,106 @@ figcaption{ padding-top:16px; }
   <article>
     <header class="lede">
       <div class="wrap">
-        <p class="lede__eyebrow reveal">Fotoensayo</p>
-        <h1 class="reveal">Del otro lado de la pantalla</h1>
-        <p class="lede__dek reveal">La brecha digital en la vida diaria de los adultos mayores de Bogotá.</p>
+        <p class="lede__eyebrow reveal">Desarrollo Social Contemporáneo</p>
+        <h1 class="reveal">La brecha digital: situaciones y soluciones</h1>
+        <p class="lede__dek reveal">Situaciones cotidianas de los adultos mayores frente a la tecnología, y propuestas para acompañarlos.</p>
         <div class="lede__meta reveal">
-          <span>Bogotá D.C.</span><span class="dot">/</span><span>Realidad de los adultos mayores</span>
+          <span>Bogotá D.C.</span><span class="dot">/</span><span>Adultos mayores y tecnología</span>
         </div>
       </div>
     </header>
 
-    <!-- ===================== INTRODUCCIÓN ===================== -->
-    <section class="intro">
+    <!-- ===================== CONTEXTO ===================== -->
+    <section class="intro" id="contexto">
       <div class="wrap">
-        <p class="reveal">Cada día, miles de adultos mayores en Bogotá se enfrentan a una ciudad que migró sus servicios esenciales —citas médicas, bancos, trámites pensionales— a una pantalla. Para quienes no tienen acceso ni acompañamiento, esa transición se vive como <strong>exclusión, dependencia y pérdida de autonomía</strong>.</p>
-        <p class="reveal">Estas siete imágenes son una mirada a esa realidad y una invitación a entender que la tecnología debería ser un puente, no un muro. Suponer que un adulto mayor no puede aprender a usarla es parte del problema; las barreras también están en la falta de inclusión, accesibilidad y paciencia de la sociedad.</p>
+        <p class="reveal">Los abuelos son el mejor regalo que Dios nos ha dado. Por eso mismo, debemos reconocer que su manera de habitar el mundo es distinta a la nuestra y, lejos de excluirlos, <strong>ayudarlos a integrarse a este mundo digital</strong>.</p>
+        <p class="reveal">Estas son cuatro situaciones que evidencian la brecha digital en la vida diaria de los adultos mayores: lo que viven, lo que los agobia y los riesgos que enfrentan. Mirarlas de cerca es el primer paso para acompañarlos.</p>
       </div>
     </section>
 
-    <!-- ===================== FOTOS ===================== -->
-    <section class="essay">
+    <!-- ===================== SITUACIONES ===================== -->
+    <section class="essay" id="situaciones">
       <div class="wrap">
 
-        <!-- ===== 01 ===== -->
+        <!-- ===== CONTEXTO — Mi abuela ===== -->
         <figure class="shot reveal">
-          <!-- ▼ REEMPLAZA AQUÍ — Foto 01: fila de adultos mayores afuera de una EPS, banco o cajero -->
+          <p class="shot__tag">Contexto</p>
           <div class="shot__media">
             <img class="js-photo" data-i="0"
-                 src="https://picsum.photos/seed/ensayo-fila/1600/1067"
-                 alt="Fila de adultos mayores esperando afuera de una EPS o un cajero en Bogotá.">
+                 src="imagenes/Mi%20abuela.jpeg"
+                 alt="Mi abuela, una adulta mayor.">
           </div>
           <figcaption>
-            <p class="shot__kicker">Las filas</p>
-            <p class="shot__text">La digitalización prometió agilidad, pero en las calles de Bogotá se tradujo en filas interminables para quienes el internet sigue siendo un territorio ajeno.</p>
-            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+            <p class="shot__kicker">Mi abuela</p>
+            <p class="shot__text">Reconocer que su forma de entender el mundo es diferente a la nuestra no es señalar una falta: es entender que merece acompañamiento para habitar un entorno digital que no fue pensado para ella.</p>
+            <p class="shot__credit">Foto: Grupo 1 · Bogotá</p>
           </figcaption>
         </figure>
 
-        <!-- ===== 02 ===== -->
+        <!-- ===== SITUACIÓN 1 — TRAMPA PARA CANGREJOS ===== -->
         <figure class="shot reveal">
-          <!-- ▼ REEMPLAZA AQUÍ — Foto 02: adulto mayor en casa mirando confundido el celular -->
+          <p class="shot__tag">Situación 1 <span>· Trampa para cangrejos</span></p>
           <div class="shot__media">
             <img class="js-photo" data-i="1"
-                 src="https://picsum.photos/seed/ensayo-rostro/1600/1067"
-                 alt="Adulto mayor en su hogar mirando con confusión la pantalla de un teléfono celular.">
+                 src="imagenes/centro%20medico.jpeg"
+                 alt="Centro médico de la zona donde los adultos mayores deben tomar turnos en una pantalla.">
           </div>
           <figcaption>
-            <p class="shot__kicker">El primer obstáculo</p>
-            <p class="shot__text">Detrás de cada pantalla hay una historia de frustración. El celular, más que una herramienta de conexión, se ha vuelto una barrera de entrada.</p>
-            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+            <p class="shot__kicker">La pantalla que reemplazó a la persona</p>
+            <p class="shot__text">Este es el centro médico de mi zona. Cada vez que voy a una cita, termino ayudando a los adultos mayores a sacar el turno o a confirmar si los han llamado. La interacción humana es cada vez menor y, al final, es una «pantalla» la que los atiende.</p>
+            <p class="shot__credit">Foto: Grupo 1 · Bogotá</p>
           </figcaption>
         </figure>
 
-        <!-- ===== 03 ===== -->
+        <!-- ===== SITUACIÓN 2 — ESPACIOS INADECUADOS ===== -->
         <figure class="shot reveal">
-          <!-- ▼ REEMPLAZA AQUÍ — Foto 03: manos digitando con vacilación una clave (cajero/app) -->
+          <p class="shot__tag">Situación 2 <span>· Espacios inadecuados</span></p>
           <div class="shot__media">
             <img class="js-photo" data-i="2"
-                 src="https://picsum.photos/seed/ensayo-manos/1600/1067"
-                 alt="Manos de un adulto mayor digitando con vacilación una clave en un cajero o aplicación.">
+                 src="imagenes/abuelo%20subiendo%20escaleras.jpeg"
+                 alt="Un adulto mayor subiendo unas escaleras con dificultad.">
           </div>
           <figcaption>
-            <p class="shot__kicker">Un error que cuesta caro</p>
-            <p class="shot__text">Un error al digitar puede bloquear sus cuentas. Sin interfaces pensadas para ellos, una tarea simple se convierte en una fuente de ansiedad.</p>
-            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+            <p class="shot__kicker">Cuando el entorno no acompaña</p>
+            <p class="shot__text">Con el paso del tiempo, las personas mayores empiezan a perder ciertas capacidades. Por eso es fundamental usar la tecnología para adaptar los espacios a sus necesidades y brindarles un acompañamiento que les devuelva seguridad y autonomía.</p>
+            <p class="shot__credit">Foto: Grupo 1 · Bogotá</p>
           </figcaption>
         </figure>
 
-        <!-- ===== 04 ===== -->
+        <!-- ===== SITUACIÓN 3 — SOBREDOSIS DE INFORMACIÓN ===== -->
         <figure class="shot reveal">
-          <!-- ▼ REEMPLAZA AQUÍ — Foto 04: adulto mayor pidiendo ayuda a un nieto, vecino o desconocido -->
+          <p class="shot__tag">Situación 3 <span>· Sobredosis de información</span></p>
           <div class="shot__media">
             <img class="js-photo" data-i="3"
-                 src="https://picsum.photos/seed/ensayo-ayuda/1600/1067"
-                 alt="Adulto mayor pidiéndole ayuda a un familiar para leer un mensaje o agendar una cita.">
+                 src="imagenes/sobredosis%20de%20informacion.jpeg"
+                 alt="Un adulto mayor agobiado por el exceso de información y desinformación digital.">
           </div>
           <figcaption>
-            <p class="shot__kicker">Depender de otros</p>
-            <p class="shot__text">La brecha digital les arrebata la independencia. Gestionar la propia salud o el propio dinero pasa a depender de la buena voluntad y del tiempo ajeno.</p>
-            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+            <p class="shot__kicker">Demasiado ruido, poca claridad</p>
+            <p class="shot__text">Hoy se produce información —y desinformación— a un ritmo vertiginoso, y por eso muchos adultos mayores se sienten agobiados. Debemos simplificar nuestros sistemas para que comprendan el mundo actual sin caer en la trampa de las noticias falsas.</p>
+            <p class="shot__credit">Foto: Grupo 1 · Bogotá</p>
           </figcaption>
         </figure>
 
-        <!-- ===== 05 ===== -->
+        <!-- ===== SITUACIÓN 4 — APROVECHADOS ===== -->
         <figure class="shot reveal">
-          <!-- ▼ REEMPLAZA AQUÍ — Foto 05: clase de sistemas en una Casa de la Sabiduría (Centro Día) -->
-          <div class="shot__media">
-            <img class="js-photo" data-i="4"
-                 src="https://picsum.photos/seed/ensayo-clase/1600/1067"
-                 alt="Adulto mayor en una clase de sistemas en una Casa de la Sabiduría del Distrito.">
+          <p class="shot__tag">Situación 4 <span>· Aprovechados</span></p>
+          <div class="shot__pair">
+            <div class="shot__media">
+              <img class="js-photo" data-i="4"
+                   src="imagenes/intento%20de%20robo%201.jpeg"
+                   alt="Primer intento de estafa digital dirigido a un adulto mayor.">
+            </div>
+            <div class="shot__media">
+              <img class="js-photo" data-i="5"
+                   src="imagenes/intenoto%20de%20robo%202.jpeg"
+                   alt="Segundo intento de estafa digital dirigido a un adulto mayor.">
+            </div>
           </div>
           <figcaption>
-            <p class="shot__kicker">Nunca es tarde</p>
-            <p class="shot__text">Espacios como las Casas de la Sabiduría del Distrito le devuelven la confianza a una generación que se niega a ser borrada por la tecnología.</p>
-            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
-          </figcaption>
-        </figure>
-
-        <!-- ===== 06 ===== -->
-        <figure class="shot reveal">
-          <!-- ▼ REEMPLAZA AQUÍ — Foto 06: libreta vieja con contraseñas y pasos anotados a lápiz -->
-          <div class="shot__media">
-            <img class="js-photo" data-i="5"
-                 src="https://picsum.photos/seed/ensayo-libreta/1600/1067"
-                 alt="Libreta de papel con contraseñas y pasos anotados a mano a lápiz.">
-          </div>
-          <figcaption>
-            <p class="shot__kicker">El manual de papel</p>
-            <p class="shot__text">Apuntes a lápiz, paso a paso: el manual analógico para sobrevivir al mundo digital, y la prueba de la falta de pedagogía de las instituciones.</p>
-            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
-          </figcaption>
-        </figure>
-
-        <!-- ===== 07 ===== -->
-        <figure class="shot reveal">
-          <!-- ▼ REEMPLAZA AQUÍ — Foto 07: rostro de perfil junto a la ventana, reflejo del celular en los lentes -->
-          <div class="shot__media">
-            <img class="js-photo" data-i="6"
-                 src="https://picsum.photos/seed/ensayo-ventana/1600/1067"
-                 alt="Rostro de perfil de un adulto mayor junto a una ventana, con el reflejo del celular en sus lentes.">
-          </div>
-          <figcaption>
-            <p class="shot__kicker">La pregunta de fondo</p>
-            <p class="shot__text">Avanzar tecnológicamente no puede significar dejar atrás a nuestros mayores. La verdadera innovación incluye la empatía.</p>
-            <p class="shot__credit">Foto: [crédito del Grupo 1] · Bogotá</p>
+            <p class="shot__kicker">Los que se aprovechan de la brecha</p>
+            <p class="shot__text">No todos se acercan con buenas intenciones. Hay quienes usan la brecha digital de los adultos mayores para aprovecharse de ellos: engaños y estafas que se valen de su desconocimiento y de su confianza.</p>
+            <p class="shot__credit">Foto: Grupo 1 · Bogotá</p>
           </figcaption>
         </figure>
 
@@ -353,6 +429,99 @@ figcaption{ padding-top:16px; }
         <p class="closing__eyebrow reveal">Para terminar</p>
         <p class="closing__lead reveal">Incluirlos no es frenar el futuro. Es construirlo bien.</p>
         <p class="closing__body reveal">Invitamos a la sociedad y a las instituciones a crear entornos digitales más accesibles, pacientes y humanos, donde envejecer no signifique quedarse afuera.</p>
+      </div>
+    </section>
+  </article>
+
+  <!-- ===================== SOLUCIÓN ===================== -->
+  <article id="solucion">
+
+    <!-- ---- 1) Solución a la problemática ---- -->
+    <section class="solution">
+      <div class="wrap">
+        <p class="solution__eyebrow reveal">Solución</p>
+        <h2 class="reveal">Cerrar la brecha digital de las personas mayores</h2>
+        <p class="solution__lead reveal">La brecha digital en la vejez no se resuelve solo entregando dispositivos: se cierra con <strong>acompañamiento, pedagogía paciente y entornos diseñados para ellos</strong>. La evidencia muestra que cuando un adulto mayor recibe formación cercana y continua, no solo aprende a usar la tecnología: gana autonomía, reduce su riesgo de ser estafado y vuelve a participar de la vida social y económica.</p>
+        <p class="solution__lead reveal">Proponemos un modelo de <strong>alfabetización digital intergeneracional y comunitaria</strong>: jóvenes y nietos como tutores, espacios barriales de práctica, y servicios públicos (salud, banca, trámites) obligados a ofrecer interfaces accesibles y atención humana de respaldo.</p>
+
+        <!-- ---- 2) Matriz 1x3 de gráficas interactivas ---- -->
+        <p class="solution__subtitle reveal">Tres datos que fundamentan la solución</p>
+        <p class="solution__hint reveal">Pasa el cursor sobre cada gráfica para ver los valores. Cifras del <strong>DANE — ECV 2020</strong>; ver fuentes al pie.</p>
+
+        <div class="charts reveal">
+          <!-- Gráfica 1 -->
+          <div class="chart-card">
+            <p class="chart-card__stat">36,3%</p>
+            <p class="chart-card__title">A los 60+ el uso de internet se desploma</p>
+            <div class="chart-card__canvas"><canvas id="chartUso"></canvas></div>
+            <p class="chart-card__note">Personas que usan internet por grupo de edad. Solo 36,3% de los mayores lo usa, frente al 84,3% de los jóvenes: ahí está la brecha que hay que cerrar. <span>DANE, ECV 2020 (Gráfica 37).</span></p>
+          </div>
+
+          <!-- Gráfica 2 -->
+          <div class="chart-card">
+            <p class="chart-card__stat">84% vs 7%</p>
+            <p class="chart-card__title">Socializan en línea, pero no hacen trámites</p>
+            <div class="chart-card__canvas"><canvas id="chartUsos"></canvas></div>
+            <p class="chart-card__note">Para qué usan internet los mayores de 60. Saben usar redes (84%), pero casi no acceden a banca (13%) ni a trámites del Estado (7%): justo donde la formación es urgente. <span>DANE, ECV 2020 (Tabla 22).</span></p>
+          </div>
+
+          <!-- Gráfica 3 -->
+          <div class="chart-card">
+            <p class="chart-card__stat">60,5%</p>
+            <p class="chart-card__title">La barrera principal: no saber usarlo</p>
+            <div class="chart-card__canvas"><canvas id="chartBarreras"></canvas></div>
+            <p class="chart-card__note">Razón principal por la que los 60+ no usan internet. No es el costo (9,9%) sino la falta de quién enseñe: la solución es pedagógica, no solo de equipos. <span>DANE, ECV 2020 (Tabla 23).</span></p>
+          </div>
+        </div>
+
+        <!-- ---- Referencias ---- -->
+        <div class="references reveal">
+          <p class="references__title">Fuentes</p>
+          <ol class="references__list">
+            <li>DANE (2022). <em>Personas mayores en Colombia: hacia la inclusión y la participación.</em> Nota Estadística, octubre de 2022. Datos de la Encuesta Nacional de Calidad de Vida (ECV) 2020, total nacional. Sección 13: «Acceso y uso de TIC por las personas mayores» (Gráfica 37, Tabla 22 y Tabla 23). Disponible en: <a href="https://www.dane.gov.co/files/investigaciones/notas-estadisticas/oct-2022-nota-estadistica-personas-mayores-en-colombia.pdf" target="_blank" rel="noopener">dane.gov.co</a></li>
+            <li>DANE. <em>Encuesta Nacional de Calidad de Vida (ECV).</em> Departamento Administrativo Nacional de Estadística, Colombia.</li>
+          </ol>
+          <p class="references__note">Cifras a nivel nacional (Colombia); se usan como referente para Bogotá. Reemplázalas si consigues el dato desagregado para Bogotá en el portal del DANE o de la Secretaría de Integración Social.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- 3) Propuesta para Bogotá ---- -->
+    <section class="proposal">
+      <div class="wrap">
+        <p class="proposal__eyebrow reveal">Propuesta para Bogotá</p>
+        <h3 class="reveal">«Nietos Digitales»: tutorías intergeneracionales en cada localidad</h3>
+        <p class="proposal__body reveal">Una red distrital que articule a los colegios y universidades con las Casas de la Sabiduría y los Centros Día del Distrito. Estudiantes acompañan, una hora a la semana, a un adulto mayor de su barrio para resolver trámites reales —cita en la EPS, app del banco, identificar estafas— mientras validan horas de servicio social.</p>
+        <ul class="proposal__steps reveal">
+          <li>
+            <span class="proposal__num">1</span>
+            <div>
+              <p class="proposal__step-t">Tutores en cada barrio</p>
+              <p class="proposal__step-d">Jóvenes de servicio social capacitados como guías digitales, asignados a Centros Día y Casas de la Sabiduría cercanas.</p>
+            </div>
+          </li>
+          <li>
+            <span class="proposal__num">2</span>
+            <div>
+              <p class="proposal__step-t">Práctica con la vida real</p>
+              <p class="proposal__step-d">Aprender haciendo el trámite que de verdad necesitan: agendar la cita, mover su pensión, reconocer un mensaje fraudulento.</p>
+            </div>
+          </li>
+          <li>
+            <span class="proposal__num">3</span>
+            <div>
+              <p class="proposal__step-t">Servicios obligados a ser accesibles</p>
+              <p class="proposal__step-d">EPS, bancos y entidades públicas con interfaces sencillas y una línea humana de respaldo para quien no pueda resolverlo en línea.</p>
+            </div>
+          </li>
+          <li>
+            <span class="proposal__num">4</span>
+            <div>
+              <p class="proposal__step-t">Defensa contra el fraude</p>
+              <p class="proposal__step-d">Talleres de seguridad digital: cómo detectar fake news, llamadas spam e intentos de ingeniería social antes de caer en ellos.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
   </article>
@@ -377,7 +546,7 @@ figcaption{ padding-top:16px; }
       </div>
       <div class="credits__meta">
         <span>Bogotá D.C., Colombia</span>
-        <span>[ Asignatura · Semestre — edítalo aquí ]</span>
+        <span>Desarrollo Social Contemporáneo</span>
       </div>
     </div>
   </footer>
@@ -472,6 +641,111 @@ figcaption{ padding-top:16px; }
       var img = media.querySelector('.js-photo');
       openLb(photos.indexOf(img));
     });
+  });
+})();
+</script>
+
+<!-- ============ GRÁFICAS INTERACTIVAS (Chart.js) ============ -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+/* ===================================================================
+   GRÁFICAS DE LA SECCIÓN "SOLUCIÓN"
+   DATOS REALES — DANE, Encuesta Nacional de Calidad de Vida (ECV) 2020,
+   tomados de la Nota Estadística "Personas mayores en Colombia" (2022).
+   Cada gráfica es interactiva: muestra el valor al pasar el cursor.
+   =================================================================== */
+(function(){
+  "use strict";
+  if (typeof Chart === 'undefined') return;
+
+  var ACCENT = '#0a6cb0', ACCENT_DARK = '#075188', LINE = '#e4e8ec', MUTED = '#6b7480';
+  Chart.defaults.font.family = "'Source Sans 3', system-ui, sans-serif";
+  Chart.defaults.font.size = 13;
+  Chart.defaults.color = MUTED;
+
+  var commonTooltip = {
+    backgroundColor: '#14181d', padding: 10, cornerRadius: 8,
+    titleFont: { weight: '700' }, displayColors: false
+  };
+
+  /* ---- 1) Personas que usan internet por grupo de edad ----
+     Fuente: DANE, ECV 2020 — Gráfica 37 (% que NO usa internet, aquí invertido a % que SÍ usa). */
+  new Chart(document.getElementById('chartUso'), {
+    type: 'bar',
+    data: {
+      labels: ['15–24', '25–34', '35–44', '45–59', '60 y más'],
+      datasets: [{
+        label: 'Usa internet',
+        data: [84.3, 81.8, 77.6, 64.9, 36.3],
+        backgroundColor: ['#bcd4e8', '#9cc1de', '#7fb0d6', '#3c8cc4', ACCENT_DARK],
+        borderRadius: 6, maxBarThickness: 46
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: Object.assign({}, commonTooltip, {
+          callbacks: { label: function(c){ return c.parsed.y + '% usa internet'; } }
+        })
+      },
+      scales: {
+        y: { beginAtZero: true, max: 100, ticks: { callback: function(v){ return v + '%'; } }, grid: { color: LINE } },
+        x: { grid: { display: false }, title: { display: true, text: 'Edad (años)', color: MUTED } }
+      }
+    }
+  });
+
+  /* ---- 2) Para qué usan internet los mayores de 60 (barras horizontales) ----
+     Fuente: DANE, ECV 2020 — Tabla 22 (actividades/servicios, columna 60 y más). */
+  new Chart(document.getElementById('chartUsos'), {
+    type: 'bar',
+    data: {
+      labels: ['Redes sociales', 'Obtener info.', 'Correo', 'Banca electrónica', 'Educación', 'Trámites del Estado'],
+      datasets: [{
+        label: '% de mayores de 60',
+        data: [84.4, 45.9, 43.1, 12.8, 8.0, 7.0],
+        backgroundColor: ['#3c8cc4', '#3c8cc4', '#3c8cc4', '#cf5a3c', '#cf5a3c', '#cf5a3c'],
+        borderRadius: 5, maxBarThickness: 22
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: Object.assign({}, commonTooltip, {
+          callbacks: { label: function(c){ return c.parsed.x + '% lo usa para esto'; } }
+        })
+      },
+      scales: {
+        x: { beginAtZero: true, max: 100, ticks: { callback: function(v){ return v + '%'; } }, grid: { color: LINE } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+
+  /* ---- 3) Razón principal por la que los 60+ no usan internet (dona) ----
+     Fuente: DANE, ECV 2020 — Tabla 23 (columna 60 y más años). */
+  new Chart(document.getElementById('chartBarreras'), {
+    type: 'doughnut',
+    data: {
+      labels: ['No sabe usarlo', 'No lo considera necesario', 'Es muy costoso', 'Otras razones'],
+      datasets: [{
+        data: [60.5, 26.8, 9.9, 2.8],
+        backgroundColor: [ACCENT_DARK, ACCENT, '#7fb0d6', '#bcd4e8'],
+        borderColor: '#fff', borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '58%',
+      plugins: {
+        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 9, font: { size: 11.5 } } },
+        tooltip: Object.assign({}, commonTooltip, {
+          callbacks: { label: function(c){ return c.label + ': ' + c.parsed + '%'; } }
+        })
+      }
+    }
   });
 })();
 </script>
